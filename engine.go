@@ -73,3 +73,13 @@ func TimeToStr(time int) string {
 	}
 	return fmt.Sprintf("%d", time)
 }
+
+// CurrentDate returns the current date in YYYY-MM-DD format
+func CurrentDate(UTC bool) string {
+	now := time.Now()
+	if UTC {
+		now = time.Now().UTC()
+	}
+	dateStr := now.Format("2006-01-02")
+	return dateStr
+}
