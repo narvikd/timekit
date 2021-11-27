@@ -1,4 +1,4 @@
-module timekit
+module github.com/narvikd/timekit
 
 go 1.17
 
