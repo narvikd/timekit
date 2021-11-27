@@ -1,6 +1,8 @@
 package timekit
 
 // IsBetweenTimesBool returns true or false depending on the result of "IsNowBetweenTimes"
+//
+// "start" and "end" must be in the hh:mm:ss format.
 func IsBetweenTimesBool(start string, end string) bool {
 	return returnFalseIfErr(IsNowBetweenTimes(start, end))
 }
