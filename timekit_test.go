@@ -4,6 +4,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 	"testing"
+	"time"
 )
 
 func TestIsNowBetweenTimes(t *testing.T) {
@@ -40,4 +41,13 @@ func TestTimeToStr(t *testing.T) {
 	require.Equal(t, "09", TimeToStr(9))
 
 	require.NotEqual(t, "010", TimeToStr(10))
+}
+
+func TestCurrentDateAddTime(t *testing.T) {
+	const oneDay = 24 * time.Hour
+	expected := time.Now().UTC().Add(oneDay).Format("2006-01-02")
+	actual := CurrentDateAddTime(oneDay, true)
+	require.Equal(t, expected, actual)
+
+	t.Log("expected (" + expected + "). Actual (" + actual + ").")
 }

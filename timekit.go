@@ -76,10 +76,18 @@ func TimeToStr(time int) string {
 
 // CurrentDate returns the current date in YYYY-MM-DD format
 func CurrentDate(UTC bool) string {
+	return getNow(UTC).Format("2006-01-02")
+}
+
+func getNow(UTC bool) time.Time {
 	now := time.Now()
 	if UTC {
 		now = time.Now().UTC()
 	}
-	dateStr := now.Format("2006-01-02")
-	return dateStr
+	return now
+}
+
+// CurrentDateAddTime adds the time passed as a parameter and returns the date in YYYY-MM-DD format
+func CurrentDateAddTime(time time.Duration, UTC bool) string {
+	return getNow(UTC).Add(time).Format("2006-01-02")
 }
